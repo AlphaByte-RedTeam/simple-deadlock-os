@@ -62,6 +62,7 @@ int main()
     pthread_join(T1, NULL);
     pthread_join(T2, NULL);
 
+    // Will never arrive here
     printf("Thread joined\n");
 
     return 0;
