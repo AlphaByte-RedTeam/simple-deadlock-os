@@ -7,15 +7,15 @@ pthread_mutex_t firstMutex, secondMutex;
 
 void *fun1()
 {
-    printf("T1 trying to acquire first mutex\n");
+    printf("T1 trying to acquiring first mutex...\n");
     pthread_mutex_lock(&firstMutex);
-    printf("T1 acquired first mutex\n");
+    printf("T1 acquired first mutex!!\n");
 
     sleep(2);
 
-    printf("T1 trying to acquire second mutex\n");
+    printf("T1 trying to acquiring second mutex...\n");
     pthread_mutex_lock(&secondMutex);
-    printf("T1 acquired second mutex\n");
+    printf("T1 acquired second mutex!!\n");
     pthread_mutex_unlock(&secondMutex);
     
     printf("T1 released second mutex\n");
@@ -27,15 +27,15 @@ void *fun1()
 
 void *fun2()
 {
-    printf("T2 trying to acquire second mutex\n");
+    printf("T2 trying to acquiring second mutex...\n");
     pthread_mutex_lock(&secondMutex);
-    printf("T2 acquired second mutex\n");
+    printf("T2 acquired second mutex!!\n");
 
     sleep(2);
 
-    printf("T2 trying to acquire first mutex\n");
+    printf("T2 trying to acquiring first mutex...\n");
     pthread_mutex_lock(&firstMutex);
-    printf("T2 acquired first mutex\n");
+    printf("T2 acquired first mutex!!\n");
     pthread_mutex_unlock(&firstMutex);
 
     printf("T2 released first mutex\n");
