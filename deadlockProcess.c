@@ -3,53 +3,53 @@
 #include <stdio.h>
 
 // This will act as the resources
-pthread_mutex_t firstMutex, secondMutex;
+pthread_mutex_t firstResource, secondResource;
 
 void *fun1()
 {
-    printf("T1 trying to acquiring first mutex...\n");
-    pthread_mutex_lock(&firstMutex);
-    printf("T1 acquired first mutex!!\n");
+    printf("T1 trying to acquire first resource...\n");
+    pthread_mutex_lock(&firstResource);
+    printf("T1 acquired first resource!!\n");
 
     sleep(2);
 
-    printf("T1 trying to acquiring second mutex...\n");
-    pthread_mutex_lock(&secondMutex);
-    printf("T1 acquired second mutex!!\n");
-    pthread_mutex_unlock(&secondMutex);
+    printf("T1 trying to acquire second resource...\n");
+    pthread_mutex_lock(&secondResource);
+    printf("T1 acquired second resource!!\n");
+    pthread_mutex_unlock(&secondResource);
     
-    printf("T1 released second mutex\n");
-    pthread_mutex_unlock(&firstMutex);
-    printf("T1 released first mutex\n");
+    printf("T1 released second resource\n");
+    pthread_mutex_unlock(&firstResource);
+    printf("T1 released first resource\n");
 
     pthread_exit(NULL);
 }
 
 void *fun2()
 {
-    printf("T2 trying to acquiring second mutex...\n");
-    pthread_mutex_lock(&secondMutex);
-    printf("T2 acquired second mutex!!\n");
+    printf("T2 trying to acquire second resource...\n");
+    pthread_mutex_lock(&secondResource);
+    printf("T2 acquired second resource!!\n");
 
     sleep(2);
 
-    printf("T2 trying to acquiring first mutex...\n");
-    pthread_mutex_lock(&firstMutex);
-    printf("T2 acquired first mutex!!\n");
-    pthread_mutex_unlock(&firstMutex);
+    printf("T2 trying to acquire first resource...\n");
+    pthread_mutex_lock(&firstResource);
+    printf("T2 acquired first resource!!\n");
+    pthread_mutex_unlock(&firstResource);
 
-    printf("T2 released first mutex\n");
-    pthread_mutex_unlock(&secondMutex);
-    printf("T2 released second mutex\n");
+    printf("T2 released first resource\n");
+    pthread_mutex_unlock(&secondResource);
+    printf("T2 released second resource\n");
 
     pthread_exit(NULL);
 }
 
 int main()
 {
-    // Initialize mutexes
-    pthread_mutex_init(&firstMutex, NULL);
-    pthread_mutex_init(&secondMutex, NULL);
+    // Initialize mutexes or resources
+    pthread_mutex_init(&firstResource, NULL);
+    pthread_mutex_init(&secondResource, NULL);
 
     // Thread available
     pthread_t T1, T2;
