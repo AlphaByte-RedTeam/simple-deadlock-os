@@ -17,7 +17,7 @@ void *fun1()
     pthread_mutex_lock(&secondResource);
     printf("T1 acquired second resource!!\n");
     pthread_mutex_unlock(&secondResource);
-    
+
     printf("T1 released second resource\n");
     pthread_mutex_unlock(&firstResource);
     printf("T1 released first resource\n");
@@ -55,8 +55,8 @@ int main()
     pthread_t T1, T2;
 
     // Thread creation
-    pthread_create(&T1, NULL, fun1 ,NULL);
-    pthread_create(&T2, NULL, fun2 ,NULL);
+    pthread_create(&T1, NULL, fun1, NULL);
+    pthread_create(&T2, NULL, fun2, NULL);
 
     // Join the thread and wait to finish
     pthread_join(T1, NULL);
